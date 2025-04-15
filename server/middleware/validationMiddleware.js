@@ -54,8 +54,15 @@ const validateItem = [
 
 // Claimant validations
 const validateClaimant = [
-  body("name").notEmpty().withMessage("Name is required"),
-  body("email").isEmail().withMessage("Enter a valid email"),
+  body("claimantname").notEmpty().withMessage("Name is required"),
+  body("mobilenumber")
+    .notEmpty()
+    .withMessage("Mobile number is required")
+    .isMobilePhone()
+    .withMessage("Enter a valid mobile number"),
+  body("hostelname").notEmpty().withMessage("Hostel name is required"),
+  body("proofofclaim").notEmpty().withMessage("Proof of claim is required"),
+  body("itemdetails").notEmpty().withMessage("Item details are required"),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -64,7 +71,6 @@ const validateClaimant = [
     next();
   },
 ];
-
 // Helper validations
 const validateHelper = [
   body("name").notEmpty().withMessage("Name is required"),

@@ -84,11 +84,11 @@ const FoundItems = (props) => {
     }
 
     const data = {
-      claimantname: userName,
-      mobilenumber: userMobile,
-      hostelname: userHostel,
-      proofofclaim: proofOfClaim,
-      itemdetails: `${item.itemname} - ${item.itemdescription}`,
+      claimantname: userName,        // 'name' changed to 'claimantname'
+      mobilenumber: userMobile,      // 'mobile' field
+      hostelname: userHostel,        // 'hostelname' field
+      proofofclaim: proofOfClaim,    // 'proof' field
+      itemdetails: `${item.itemname} - ${item.itemdescription}`, // Item description
     };
 
     try {
@@ -101,6 +101,7 @@ const FoundItems = (props) => {
       alert("Item has been successfully removed!");
     } catch (error) {
       console.error("Error submitting claim:", error);
+      alert("There was an issue submitting your claim. Please try again.");
     }
   };
 

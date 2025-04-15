@@ -40,6 +40,7 @@ app.use(
   })
 );
 
+
 // Connect to the database
 connectToMongo();
 
@@ -70,6 +71,7 @@ app.delete("/helper/:id", helperController.deleteHelper);
 
 // Error handling middleware
 app.use(errorHandler);
+app.use(express.json()); 
 
 // Start our server
 const PORT = process.env.PORT || 2000;
