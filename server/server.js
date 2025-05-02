@@ -1,10 +1,7 @@
+
 // server.js
 
-// Load environment variables
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -33,13 +30,13 @@ app.use(bodyParser.json({ limit: "500mb" }));
 app.use(bodyParser.urlencoded({ limit: "500mb", extended: true }));
 app.use(cookieParser());
 
+// CORS configuration to allow requests from your client
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://yourdomain.com"],
-    credentials: true,
+    origin: ["http://13.61.63.5:3000", "http://localhost:3000", "https://yourdomain.com"], // Allow these origins
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
-
 
 // Connect to the database
 connectToMongo();
@@ -74,7 +71,7 @@ app.use(errorHandler);
 app.use(express.json()); 
 
 // Start our server
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
